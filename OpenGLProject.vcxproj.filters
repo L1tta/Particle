@@ -32,6 +32,9 @@
     <Filter Include="Particle">
       <UniqueIdentifier>{4e1ff50d-ea57-4822-9650-ceeaf410deb5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Shaders">
+      <UniqueIdentifier>{7a3446fd-fbf6-4d86-8cee-c63b8e6559b4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\CameraAndProjections.h">
@@ -81,6 +84,12 @@
     <ClInclude Include="src\ParticleEmitter.h">
       <Filter>Particle</Filter>
     </ClInclude>
+    <ClInclude Include="src\GPUParticle.h">
+      <Filter>Particle</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GPUParticleEmitter.h">
+      <Filter>Particle</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\CameraAndProjections.cpp">
@@ -120,5 +129,25 @@
     <ClCompile Include="src\ParticleEmitter.cpp">
       <Filter>Particle</Filter>
     </ClCompile>
+    <ClCompile Include="src\GPUParticle.cpp">
+      <Filter>Particle</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GPUParticleEmitter.cpp">
+      <Filter>Particle</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="gpuParticle.frag">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="gpuParticle.geom">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="gpuParticle.vert">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="gpuParticleUpdate.vert">
+      <Filter>Shaders</Filter>
+    </None>
   </ItemGroup>
 </Project>
