@@ -35,6 +35,12 @@
     <Filter Include="Shaders">
       <UniqueIdentifier>{7a3446fd-fbf6-4d86-8cee-c63b8e6559b4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="RenderTargets">
+      <UniqueIdentifier>{f88f0f45-849b-408b-8656-424e59727c36}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Post Processing">
+      <UniqueIdentifier>{699f4bfe-a584-4db3-823b-36bde2e1ec25}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\CameraAndProjections.h">
@@ -90,6 +96,12 @@
     <ClInclude Include="src\GPUParticleEmitter.h">
       <Filter>Particle</Filter>
     </ClInclude>
+    <ClInclude Include="src\RenderTarget.h">
+      <Filter>RenderTargets</Filter>
+    </ClInclude>
+    <ClInclude Include="src\PostProcessing.h">
+      <Filter>Post Processing</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\CameraAndProjections.cpp">
@@ -135,6 +147,12 @@
     <ClCompile Include="src\GPUParticleEmitter.cpp">
       <Filter>Particle</Filter>
     </ClCompile>
+    <ClCompile Include="src\RenderTarget.cpp">
+      <Filter>RenderTargets</Filter>
+    </ClCompile>
+    <ClCompile Include="src\PostProcessing.cpp">
+      <Filter>Post Processing</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="gpuParticle.frag">
@@ -147,6 +165,12 @@
       <Filter>Shaders</Filter>
     </None>
     <None Include="gpuParticleUpdate.vert">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="PostProcessing.vert">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="PostProcessing.frag">
       <Filter>Shaders</Filter>
     </None>
   </ItemGroup>

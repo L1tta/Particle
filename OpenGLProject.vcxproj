@@ -102,7 +102,9 @@
     <ClInclude Include="src\OpenGLData.h" />
     <ClInclude Include="src\Particle.h" />
     <ClInclude Include="src\ParticleEmitter.h" />
+    <ClInclude Include="src\PostProcessing.h" />
     <ClInclude Include="src\Quaternions.h" />
+    <ClInclude Include="src\RenderTarget.h" />
     <ClInclude Include="src\stb_image.h" />
     <ClInclude Include="src\Texture.h" />
     <ClInclude Include="src\Vertex.h" />
@@ -121,7 +123,9 @@
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Particle.cpp" />
     <ClCompile Include="src\ParticleEmitter.cpp" />
+    <ClCompile Include="src\PostProcessing.cpp" />
     <ClCompile Include="src\Quaternions.cpp" />
+    <ClCompile Include="src\RenderTarget.cpp" />
     <ClCompile Include="src\Texture.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -129,6 +133,8 @@
     <None Include="gpuParticle.geom" />
     <None Include="gpuParticle.vert" />
     <None Include="gpuParticleUpdate.vert" />
+    <None Include="PostProcessing.frag" />
+    <None Include="PostProcessing.vert" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

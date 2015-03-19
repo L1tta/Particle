@@ -1,4 +1,5 @@
 #include "Camera.h"
+#include <iostream>
 
 #include "GLFW/glfw3.h"
 
@@ -97,7 +98,6 @@ void FlyCamera::update(float dt)
 		world[1] = rot * world[1];
 		world[2] = rot * world[2];
 	}
-
 	view = glm::inverse(world);
 	updateViewProj();
 }
