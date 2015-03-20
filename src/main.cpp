@@ -1,9 +1,9 @@
-#include "PostProcessing.h"
+#include "Lighting.h"
 //why were my pdb files not loading in my other projects like oh my god
 
 int main()
 {
-	PostProcessing app;
+	Lighting app;
 
 
 	if (app.startup() == false)

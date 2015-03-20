@@ -57,7 +57,7 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS;WIN32;GLM_FORCE_PURE;_DEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;WIN32;GLM_FORCE_PURE;_DEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
     </ClCompile>
@@ -94,11 +94,14 @@
     <ClInclude Include="src\CameraAndProjections.h" />
     <ClInclude Include="src\FBXFile.h" />
     <ClInclude Include="src\Gizmos.h" />
+    <ClInclude Include="src\GLM_Header.h" />
     <ClInclude Include="src\gl_core_4_4.h" />
+    <ClInclude Include="src\GL_Header.h" />
     <ClInclude Include="src\GPUParticle.h" />
     <ClInclude Include="src\GPUParticleEmitter.h" />
     <ClInclude Include="src\GUI.h" />
     <ClInclude Include="src\IntroToOpenGL.h" />
+    <ClInclude Include="src\Lighting.h" />
     <ClInclude Include="src\OpenGLData.h" />
     <ClInclude Include="src\Particle.h" />
     <ClInclude Include="src\ParticleEmitter.h" />
@@ -107,7 +110,10 @@
     <ClInclude Include="src\RenderTarget.h" />
     <ClInclude Include="src\stb_image.h" />
     <ClInclude Include="src\Texture.h" />
+    <ClInclude Include="src\tiny_obj_loader.h" />
+    <ClInclude Include="src\Utility.h" />
     <ClInclude Include="src\Vertex.h" />
+    <ClInclude Include="src\Vertex2.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Animation.cpp" />
@@ -120,6 +126,7 @@
     <ClCompile Include="src\GPUParticleEmitter.cpp" />
     <ClCompile Include="src\GUI.cpp" />
     <ClCompile Include="src\IntroToOpenGL.cpp" />
+    <ClCompile Include="src\Lighting.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Particle.cpp" />
     <ClCompile Include="src\ParticleEmitter.cpp" />
@@ -127,12 +134,18 @@
     <ClCompile Include="src\Quaternions.cpp" />
     <ClCompile Include="src\RenderTarget.cpp" />
     <ClCompile Include="src\Texture.cpp" />
+    <ClCompile Include="src\tiny_obj_loader.cc" />
+    <ClCompile Include="src\Utility.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="gpuParticle.frag" />
     <None Include="gpuParticle.geom" />
     <None Include="gpuParticle.vert" />
     <None Include="gpuParticleUpdate.vert" />
+    <None Include="lighting_fragment.glsl" />
+    <None Include="lighting_vertex.glsl" />
+    <None Include="Mesh.frag" />
+    <None Include="Mesh.vert" />
     <None Include="PostProcessing.frag" />
     <None Include="PostProcessing.vert" />
   </ItemGroup>

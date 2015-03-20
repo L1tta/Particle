@@ -35,20 +35,21 @@ bool Particles::startup()
 	glAttachShader(m_programID, fs);
 	glLinkProgram(m_programID);
 	glDeleteShader(fs);
-	glDeleteShader(vs);
+	glDeleteShader(vs);
+
 
 	glClearColor(0.1f,0.1f,0.1f,1.0f);
 	glEnable(GL_DEPTH_TEST);
 
 
 	m_emitter[0] = new ParticleEmitter(10.0f,12.0f,-10.0f);
-	m_emitter[0]->initalise(1000, 500, 0.1f, 5.0f, 1, 6, 0.2, 0.1f, glm::vec4(1.0f, 1.0f, 1.0f, 1), glm::vec4(1, 1, 1, 1));
+	m_emitter[0]->initalise(1000, 500, 0.1f, 5.0f, 1, 6, 0.2f, 0.1f, glm::vec4(1.0f, 1.0f, 1.0f, 1), glm::vec4(1, 1, 1, 1));
 	m_emitter[1] = new ParticleEmitter(-10.0f, 12.0f, 10.0f);
-	m_emitter[1]->initalise(1000, 500, 0.1f, 5.0f, 1, 6, 0.2, 0.1f, glm::vec4(1.0f, 1.0f, 1.0f, 1), glm::vec4(1, 1, 1, 1));
+	m_emitter[1]->initalise(1000, 500, 0.1f, 5.0f, 1, 6, 0.2f, 0.1f, glm::vec4(1.0f, 1.0f, 1.0f, 1), glm::vec4(1, 1, 1, 1));
 	m_emitter[2] = new ParticleEmitter(10.0f, 12.0f, 10.0f);
-	m_emitter[2]->initalise(1000, 500, 0.1f, 5.0f, 1, 6, 0.2, 0.1f, glm::vec4(1.0f, 1.0f, 1.0f, 1), glm::vec4(1, 1, 1, 1));
+	m_emitter[2]->initalise(1000, 500, 0.1f, 5.0f, 1, 6, 0.2f, 0.1f, glm::vec4(1.0f, 1.0f, 1.0f, 1), glm::vec4(1, 1, 1, 1));
 	m_emitter[3] = new ParticleEmitter(-10.0f, 12.0f, -10.0f);
-	m_emitter[3]->initalise(1000, 500, 0.1f, 5.0f, 1, 6, 0.2, 0.1f, glm::vec4(1.0f, 1.0f, 1.0f, 1), glm::vec4(1, 1, 1, 1));
+	m_emitter[3]->initalise(1000, 500, 0.1f, 5.0f, 1, 6, 0.2f, 0.1f, glm::vec4(1.0f, 1.0f, 1.0f, 1), glm::vec4(1, 1, 1, 1));
 	//m_emitter[1] = new ParticleEmitter(1.0f,0.0f,-1.0f);
 	//m_emitter[1]->initalise(1000, 500, 0.1f, 5.0f, 1, 5, 1, 0.1f, glm::vec4(0.0f, 1.0f, 0.0f, 1), glm::vec4(1, 1, 0, 1));
 	//m_emitter[2] = new ParticleEmitter(-1.0f, 0.0f, 1.0f);

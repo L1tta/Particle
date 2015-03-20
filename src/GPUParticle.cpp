@@ -38,7 +38,7 @@ bool GPUParticle::startup()
 	glEnable(GL_DEPTH_TEST);
 
 	m_emitter = new GPUParticleEmitter();
-	m_emitter->initalise(100000, 5.0f, 20.0f, 10, 40, 0.1, 0.1f, glm::vec4(1, 0, 0, 1), glm::vec4(1, 1, 0, 1));
+	m_emitter->initalise(100000, 5.0f, 20.0f, 10, 40, 0.1f, 0.1f, glm::vec4(1, 0, 0, 1), glm::vec4(1, 1, 0, 1));
 
 	Gizmos::create();
 
