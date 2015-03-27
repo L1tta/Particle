@@ -44,6 +44,15 @@
     <Filter Include="Rendering Geometry">
       <UniqueIdentifier>{3db387dc-35a5-4774-9c33-ec5d46c80fc5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="DeferredRendering">
+      <UniqueIdentifier>{802d4641-90f0-4959-a7a7-e1424012ff37}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ProceduralGeneration">
+      <UniqueIdentifier>{7815811d-cbba-4584-8f53-99c9bc7195f9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shaders\Shadows">
+      <UniqueIdentifier>{0716550a-433d-4e1a-afed-50c37b1379e7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\CameraAndProjections.h">
@@ -115,6 +124,15 @@
     <ClInclude Include="src\tiny_obj_loader.h">
       <Filter>Lighting</Filter>
     </ClInclude>
+    <ClInclude Include="src\Shadows.h">
+      <Filter>Shaders\Shadows</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DeferredRendering.h">
+      <Filter>DeferredRendering</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ProceduralGeneration.h">
+      <Filter>ProceduralGeneration</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\CameraAndProjections.cpp">
@@ -173,6 +191,15 @@
     <ClCompile Include="src\tiny_obj_loader.cc">
       <Filter>Lighting</Filter>
     </ClCompile>
+    <ClCompile Include="src\Shadows.cpp">
+      <Filter>Shaders\Shadows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DeferredRendering.cpp">
+      <Filter>DeferredRendering</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ProceduralGeneration.cpp">
+      <Filter>ProceduralGeneration</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="gpuParticle.frag">
@@ -203,6 +230,33 @@
       <Filter>Shaders</Filter>
     </None>
     <None Include="Mesh.frag">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="Shadow.vert">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="Shadow.frag">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="ShadowMap.vert">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="ShadowMap.frag">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="GBuffer.vert">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="GBuffer.frag">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="Composite.vert">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="Composite.frag">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="DirLight.frag">
       <Filter>Shaders</Filter>
     </None>
   </ItemGroup>

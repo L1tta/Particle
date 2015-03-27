@@ -1,9 +1,9 @@
-#include "Lighting.h"
+#include "ProceduralGeneration.h"
 //why were my pdb files not loading in my other projects like oh my god
 
 int main()
 {
-	Lighting app;
+	ProceduralGeneration app;
 
 
 	if (app.startup() == false)
