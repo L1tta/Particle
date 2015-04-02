@@ -53,6 +53,12 @@
     <Filter Include="Shaders\Shadows">
       <UniqueIdentifier>{0716550a-433d-4e1a-afed-50c37b1379e7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="AdvanceNav">
+      <UniqueIdentifier>{05cd756f-6d3d-4b18-9ef3-ed14e35dcb3f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PhysicsLight">
+      <UniqueIdentifier>{6141f717-0b3d-4750-adf0-9648fbdabd06}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\CameraAndProjections.h">
@@ -133,6 +139,12 @@
     <ClInclude Include="src\ProceduralGeneration.h">
       <Filter>ProceduralGeneration</Filter>
     </ClInclude>
+    <ClInclude Include="src\AdvanceNav.h">
+      <Filter>AdvanceNav</Filter>
+    </ClInclude>
+    <ClInclude Include="src\PhysicsLight.h">
+      <Filter>PhysicsLight</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\CameraAndProjections.cpp">
@@ -200,6 +212,12 @@
     <ClCompile Include="src\ProceduralGeneration.cpp">
       <Filter>ProceduralGeneration</Filter>
     </ClCompile>
+    <ClCompile Include="src\AdvanceNav.cpp">
+      <Filter>AdvanceNav</Filter>
+    </ClCompile>
+    <ClCompile Include="src\PhysicsLight.cpp">
+      <Filter>PhysicsLight</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="gpuParticle.frag">
@@ -257,6 +275,12 @@
       <Filter>Shaders</Filter>
     </None>
     <None Include="DirLight.frag">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="sponza.frag">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="sponza.vert">
       <Filter>Shaders</Filter>
     </None>
   </ItemGroup>

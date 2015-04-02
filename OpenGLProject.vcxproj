@@ -87,6 +87,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\AdvanceNav.h" />
     <ClInclude Include="src\Animation.h" />
     <ClInclude Include="src\AntTweakBar.h" />
     <ClInclude Include="src\Application.h" />
@@ -106,6 +107,7 @@
     <ClInclude Include="src\OpenGLData.h" />
     <ClInclude Include="src\Particle.h" />
     <ClInclude Include="src\ParticleEmitter.h" />
+    <ClInclude Include="src\PhysicsLight.h" />
     <ClInclude Include="src\PostProcessing.h" />
     <ClInclude Include="src\ProceduralGeneration.h" />
     <ClInclude Include="src\Quaternions.h" />
@@ -119,6 +121,7 @@
     <ClInclude Include="src\Vertex2.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\AdvanceNav.cpp" />
     <ClCompile Include="src\Animation.cpp" />
     <ClCompile Include="src\Application.cpp" />
     <ClCompile Include="src\Camera.cpp" />
@@ -134,6 +137,7 @@
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Particle.cpp" />
     <ClCompile Include="src\ParticleEmitter.cpp" />
+    <ClCompile Include="src\PhysicsLight.cpp" />
     <ClCompile Include="src\PostProcessing.cpp" />
     <ClCompile Include="src\ProceduralGeneration.cpp" />
     <ClCompile Include="src\Quaternions.cpp" />
@@ -163,6 +167,8 @@
     <None Include="Shadow.vert" />
     <None Include="ShadowMap.frag" />
     <None Include="ShadowMap.vert" />
+    <None Include="sponza.frag" />
+    <None Include="sponza.vert" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
