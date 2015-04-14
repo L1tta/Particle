@@ -1,9 +1,9 @@
-#include "PhysicsLight.h"
+#include "Assesment.h"
 //why were my pdb files not loading in my other projects like oh my god
 
 int main()
 {
-	PhysicsLight app;
+	Assesment app;
 
 
 	if (app.startup() == false)

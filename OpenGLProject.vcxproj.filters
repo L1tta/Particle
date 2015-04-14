@@ -59,6 +59,9 @@
     <Filter Include="PhysicsLight">
       <UniqueIdentifier>{6141f717-0b3d-4750-adf0-9648fbdabd06}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Assesment">
+      <UniqueIdentifier>{3b45da8e-5457-4cee-93a8-442bac5ac700}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\CameraAndProjections.h">
@@ -145,6 +148,9 @@
     <ClInclude Include="src\PhysicsLight.h">
       <Filter>PhysicsLight</Filter>
     </ClInclude>
+    <ClInclude Include="src\Assesment.h">
+      <Filter>Assesment</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\CameraAndProjections.cpp">
@@ -217,6 +223,9 @@
     </ClCompile>
     <ClCompile Include="src\PhysicsLight.cpp">
       <Filter>PhysicsLight</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Assesment.cpp">
+      <Filter>Assesment</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
