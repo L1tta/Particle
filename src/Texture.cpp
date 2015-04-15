@@ -43,12 +43,17 @@ bool Texture::startup()
 	glDeleteShader(fragmentShader);
 
 	int imageWidth = 0, imageHeight = 0, imageFormat = 0;
-	unsigned char* data = stbi_load("./data/textures/crate.png", &imageWidth, &imageHeight, &imageFormat, STBI_default);
+	unsigned char* data = stbi_load("./data/textures/crate.png", &imageWidth, &imageHeight, &imageFormat, STBI_default);
+
 	glGenTextures(1, &m_texture);
 	glBindTexture(GL_TEXTURE_2D, m_texture);
 	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, imageWidth, imageHeight, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);	stbi_image_free(data);	float vertexData[] = {
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+
+	stbi_image_free(data);
+
+	float vertexData[] = {
 		-5, 0, -5, 1, 0, 0,
 		-5, 0, 5, 1, 0, 1,
 		5, 0, 5, 1, 1, 1,
@@ -137,7 +142,7 @@ void Texture::draw()
 	glBindVertexArray(m_vao);
 	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr);
 
-		Gizmos::draw(camera.proj, camera.view);
+	Gizmos::draw(camera.proj, camera.view);
 
 	glfwSwapBuffers(m_window);
 	glfwPollEvents();

@@ -19,7 +19,11 @@ public:
 	OpenGLData m_planeMesh;
 	unsigned int m_programID;
 	unsigned int m_texture;
+	unsigned int m_tprogramID;
 	unsigned int m_perlinTexture;
+	unsigned int m_vbo;
+	unsigned int m_vao;
+	unsigned int m_ibo;
 	float* m_perlinData;
 	FlyCamera m_Camera;
 	float dims;

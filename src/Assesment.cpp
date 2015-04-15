@@ -50,38 +50,83 @@ bool Assesment::startup()
 						   {tempColour = mix(vec4(0,0,1,1), vec4(1,1,0,1), 1 - edge);} \
 						   out_color = tempColour;}";
 
-	/*const char* vsSource = "#version 410\n \
-						   	layout(location=0) in vec4 position; \
-							layout(location=1) in vec2 texcoord; \
-							uniform mat4 view_proj; \
-							out vec2 frag_texcoord; \
-							uniform sampler2D perlin_texture;\
-							void main() { \
-							vec4 pos = position;\
-							pos.y += texture(perlin_texture, texcoord).r * 5;\
-							frag_texcoord = texcoord; \
-							gl_Position= view_proj * pos;\
-							}";
-	const char* fsSource = "#version 410\n \
-						   	in vec2 frag_texcoord; \
-							out vec4 out_color; \
-							uniform sampler2D perlin_texture; \
-							void main() { \
-							out_color = texture(perlin_texture,frag_texcoord).rrrr;\
-							out_color.a = 1;\
-							}";*/
-	unsigned int vertexShader = glCreateShader(GL_VERTEX_SHADER);
-	glShaderSource(vertexShader, 1, (const char**)&vsSource, 0);
-	glCompileShader(vertexShader);
-	unsigned int fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
-	glShaderSource(fragmentShader, 1, (const char**)&fsSource, 0);
-	glCompileShader(fragmentShader);
+	unsigned int pgvertexShader = glCreateShader(GL_VERTEX_SHADER);
+	glShaderSource(pgvertexShader, 1, (const char**)&vsSource, 0);
+	glCompileShader(pgvertexShader);
+	unsigned int pgfragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
+	glShaderSource(pgfragmentShader, 1, (const char**)&fsSource, 0);
+	glCompileShader(pgfragmentShader);
 	m_programID = glCreateProgram();
-	glAttachShader(m_programID, vertexShader);
-	glAttachShader(m_programID, fragmentShader);
+	glAttachShader(m_programID, pgvertexShader);
+	glAttachShader(m_programID, pgfragmentShader);
 	glLinkProgram(m_programID);
-	glDeleteShader(vertexShader);
-	glDeleteShader(fragmentShader);
+	glDeleteShader(pgvertexShader);
+	glDeleteShader(pgfragmentShader);
+
+	vsSource = "#version 410\n \
+						   layout(location=0) in vec4 Position; \
+						   layout(location=1) in vec2 TexCoord; \
+						   out vec2 vTexCoord; \
+						   uniform mat4 ProjectionView; \
+						   void main() { \
+						   vTexCoord = TexCoord; \
+						   gl_Position= ProjectionView * Position;\
+						   }";
+	fsSource = "#version 410\n \
+						   in vec2 vTexCoord; \
+						   out vec4 FragColor; \
+						   uniform sampler2D diffuse; \
+						   void main() { \
+						   FragColor = texture(diffuse,vTexCoord);\
+						   }";
+	unsigned int tvertexShader = glCreateShader(GL_VERTEX_SHADER);
+	glShaderSource(tvertexShader, 1, (const char**)&vsSource, 0);
+	glCompileShader(tvertexShader);
+	unsigned int tfragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
+	glShaderSource(tfragmentShader, 1, (const char**)&fsSource, 0);
+	glCompileShader(tfragmentShader);
+	m_tprogramID = glCreateProgram();
+	glAttachShader(m_tprogramID, tvertexShader);
+	glAttachShader(m_tprogramID, tfragmentShader);
+	glLinkProgram(m_tprogramID);
+	glDeleteShader(tvertexShader);
+	glDeleteShader(tfragmentShader);
+
+	int imageWidth = 0, imageHeight = 0, imageFormat = 0;
+	unsigned char* data = stbi_load("./data/textures/crate.png", &imageWidth, &imageHeight, &imageFormat, STBI_default);
+
+	glGenTextures(1, &m_texture);
+	glBindTexture(GL_TEXTURE_2D, m_texture);
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, imageWidth, imageHeight, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	stbi_image_free(data);
+
+	float vertexData[] = {
+		-5, 0, -5, 1, 0, 0,
+		-5, 0, 5, 1, 0, 1,
+		5, 0, 5, 1, 1, 1,
+		5, 0, -5, 1, 1, 0,
+	};
+	unsigned int indexData[] = {
+		0, 1, 2,
+		0, 2, 3,
+	};
+	glGenVertexArrays(1, &m_vao);
+	glBindVertexArray(m_vao);
+	glGenBuffers(1, &m_vbo);
+	glBindBuffer(GL_ARRAY_BUFFER, m_vbo);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(float) * 6 * 4, vertexData, GL_STATIC_DRAW);
+	glGenBuffers(1, &m_ibo);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_ibo);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(unsigned int) * 6, indexData, GL_STATIC_DRAW);
+	glEnableVertexAttribArray(0);
+	glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, sizeof(float) * 6, 0);
+	glEnableVertexAttribArray(1);
+	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 6, ((char*)0) + 16);
+	glBindVertexArray(0);
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 
 	glPolygonMode(GL_FRONT_AND_BACK, GL_POLYGON_MODE);
 	return true;
@@ -125,14 +170,33 @@ void Assesment::draw()
 	int viewProjUnif = glGetUniformLocation(m_programID, "view_proj");
 
 	glUniformMatrix4fv(viewProjUnif, 1, GL_FALSE, (float*)&m_Camera.view_proj);
-	int texUniform = glGetUniformLocation(m_programID, "perlin_texture");
+	int texUniform = glGetUniformLocation(m_perlinTexture, "perlin_texture");
 	glUniform1i(texUniform, 0);
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, m_perlinTexture);
 	glBindVertexArray(m_planeMesh.m_VAO);
 	glDrawElements(GL_TRIANGLES, m_planeMesh.m_indexCount, GL_UNSIGNED_INT, 0);
+	Gizmos::draw(m_Camera.view_proj);
+
+	//glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	glBindVertexArray(m_vao);
+
+	glUseProgram(m_tprogramID);
+	// bind the camera
+	int loc = glGetUniformLocation(m_tprogramID, "ProjectionView");
+	glUniformMatrix4fv(loc, 1, GL_FALSE, (float*)&m_Camera.view_proj);
+	// set texture slot
+	glActiveTexture(GL_TEXTURE0);
+	glBindTexture(GL_TEXTURE_2D, m_texture);
+	// tell the shader where it is
+	loc = glGetUniformLocation(m_tprogramID, "diffuse");
+	glUniform1i(loc, 0);
+	// draw
+	glBindVertexArray(m_vao);
+	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr);
 
 	Gizmos::draw(m_Camera.view_proj);
+
 	glfwSwapBuffers(this->m_window);
 	glfwPollEvents();
 }
@@ -251,12 +315,14 @@ void Assesment::buildPerlinTexture(glm::ivec2 dims, int octaves, float persistan
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
 
-	/*int imageWidth = 0, imageHeight = 0, imageFormat = 0;
-	unsigned char* data = stbi_load("./data/textures/crate.png", &imageWidth, &imageHeight, &imageFormat, STBI_default);
-	
-	glGenTextures(1, &m_perlinTexture);
-	glBindTexture(GL_TEXTURE_2D, m_perlinTexture);
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, imageWidth, imageHeight, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);	stbi_image_free(data);*/
+	//int imageWidth = 0, imageHeight = 0, imageFormat = 0;
+	//unsigned char* data = stbi_load("./data/textures/crate.png", &imageWidth, &imageHeight, &imageFormat, STBI_default);
+	//glGenTextures(1, &m_perlinTexture);
+	//glBindTexture(GL_TEXTURE_2D, m_perlinTexture);
+	//glTexImage2D(GL_TEXTURE_2D, 0, GL_R32F, dims.x, dims.y, 0, GL_RED, GL_UNSIGNED_BYTE, data);
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+	//stbi_image_free(data);
 }
