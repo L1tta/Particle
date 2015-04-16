@@ -26,7 +26,7 @@ unsigned int GPUParticleEmitter::loadShader(unsigned int type, const char* path)
 
 GPUParticleEmitter::GPUParticleEmitter()
 : m_particles(nullptr), m_maxParticles(0),
-m_position(0, 0, 0),
+m_position(0, 10, 0),
 m_drawShader(0),
 m_updateShader(0),
 m_lastDrawTime(0) {

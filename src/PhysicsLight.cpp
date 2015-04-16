@@ -72,7 +72,9 @@ void PhysicsLight::createOpenGLBuffers(FBXFile* fbx)
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 		mesh->m_userData = glData;
 	}
-}void PhysicsLight::cleanupOpenGLBuffers(FBXFile* fbx) {
+}
+
+void PhysicsLight::cleanupOpenGLBuffers(FBXFile* fbx) {
 	// clean up the vertex data attached to each mesh
 	for (unsigned int i = 0; i < fbx->getMeshCount(); ++i) {
 		FBXMeshNode* mesh = fbx->getMeshByIndex(i);
@@ -82,7 +84,8 @@ void PhysicsLight::createOpenGLBuffers(FBXFile* fbx)
 		glDeleteBuffers(1, &glData[2]);
 		delete[] glData;
 	}
-}
+}
+
 bool PhysicsLight::startup()
 {
 	m_background_color.r = 0.75f;
