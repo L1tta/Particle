@@ -62,6 +62,9 @@
     <Filter Include="Assesment">
       <UniqueIdentifier>{3b45da8e-5457-4cee-93a8-442bac5ac700}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Cache Coherence">
+      <UniqueIdentifier>{d83323d1-73ee-4e74-a50b-a92dcc94b6b5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\CameraAndProjections.h">
