@@ -6,6 +6,7 @@
 #include "Vertex2.h"
 #include "GPUParticle.h"
 #include "FBXFile.h"
+#include "AntTweakBar.h"
 
 class Assesment : public Application
 {
@@ -17,11 +18,14 @@ public:
 	void buildGrid(vec2 realDim, glm::ivec2 dims);
 	void buildPerlinTexture(glm::ivec2 dims, int octaves, float persistance);
 
+	TwBar* m_bar;
 
 	OpenGLData m_planeMesh;
 	unsigned int m_programID;
 	unsigned int m_texture;
 	unsigned int m_tprogramID;
+	unsigned int m_texture2;
+	unsigned int m_texture3;
 	unsigned int m_perlinTexture;
 	unsigned int m_fbxprogramID;
 	unsigned int m_RockTexture;
@@ -49,10 +53,14 @@ public:
 	std::vector<unsigned int> m_indices;
 	glm::mat4 m_localTransform;
 	glm::mat4 m_globalTransform;
-	void* m_userData;	void createOpenGLBuffers(FBXFile* fbx);
+	void* m_userData;
+	void createOpenGLBuffers(FBXFile* fbx);
 	void cleanupOpenGLBuffers(FBXFile* fbx);
 	FBXFile* m_fbx;
 	FBXFile* m_fbx2;
+
+	vec3 m_lightDirection;
+
 };
 
 

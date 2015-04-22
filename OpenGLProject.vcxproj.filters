@@ -89,9 +89,6 @@
     <ClInclude Include="src\GUI.h">
       <Filter>GUI</Filter>
     </ClInclude>
-    <ClInclude Include="src\AntTweakBar.h">
-      <Filter>GUI</Filter>
-    </ClInclude>
     <ClInclude Include="src\Texture.h">
       <Filter>Texture</Filter>
     </ClInclude>
@@ -112,12 +109,6 @@
       <Filter>Particle</Filter>
     </ClInclude>
     <ClInclude Include="src\ParticleEmitter.h">
-      <Filter>Particle</Filter>
-    </ClInclude>
-    <ClInclude Include="src\GPUParticle.h">
-      <Filter>Particle</Filter>
-    </ClInclude>
-    <ClInclude Include="src\GPUParticleEmitter.h">
       <Filter>Particle</Filter>
     </ClInclude>
     <ClInclude Include="src\RenderTarget.h">
@@ -152,6 +143,15 @@
       <Filter>PhysicsLight</Filter>
     </ClInclude>
     <ClInclude Include="src\Assesment.h">
+      <Filter>Assesment</Filter>
+    </ClInclude>
+    <ClInclude Include="src\AntTweakBar.h">
+      <Filter>Assesment</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GPUParticle.h">
+      <Filter>Assesment</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GPUParticleEmitter.h">
       <Filter>Assesment</Filter>
     </ClInclude>
   </ItemGroup>
@@ -193,12 +193,6 @@
     <ClCompile Include="src\ParticleEmitter.cpp">
       <Filter>Particle</Filter>
     </ClCompile>
-    <ClCompile Include="src\GPUParticle.cpp">
-      <Filter>Particle</Filter>
-    </ClCompile>
-    <ClCompile Include="src\GPUParticleEmitter.cpp">
-      <Filter>Particle</Filter>
-    </ClCompile>
     <ClCompile Include="src\RenderTarget.cpp">
       <Filter>RenderTargets</Filter>
     </ClCompile>
@@ -228,6 +222,12 @@
       <Filter>PhysicsLight</Filter>
     </ClCompile>
     <ClCompile Include="src\Assesment.cpp">
+      <Filter>Assesment</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GPUParticle.cpp">
+      <Filter>Assesment</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GPUParticleEmitter.cpp">
       <Filter>Assesment</Filter>
     </ClCompile>
   </ItemGroup>
