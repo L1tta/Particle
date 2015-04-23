@@ -25,6 +25,13 @@ public:
 	void draw(float time, const glm::mat4& a_cameraTransform,
 		const glm::mat4& a_projectionView);
 	unsigned int loadShader(unsigned int type, const char* path);
+	void UpdateSelf(float a_startSize, float a_endSize,
+		const glm::vec4& a_startColour,
+		const glm::vec4& a_endColour);
+	float m_startSize;
+	float m_endSize;
+	glm::vec4 m_startColour;
+	glm::vec4 m_endColour;
 
 protected:
 	void createBuffers();
@@ -37,10 +44,6 @@ protected:
 	float m_lifespanMax;
 	float m_velocityMin;
 	float m_velocityMax;
-	float m_startSize;
-	float m_endSize;
-	glm::vec4 m_startColour;
-	glm::vec4 m_endColour;
 	unsigned int m_activeBuffer;
 	unsigned int m_vao[2];
 	unsigned int m_vbo[2];

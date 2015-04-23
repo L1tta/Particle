@@ -5,6 +5,71 @@
 #include "Gizmos.h"
 #include "Vertex.h"
 
+void GPUParticleEmitter::UpdateSelf(float a_startSize, float a_endSize,
+	const glm::vec4& a_startColour,
+	const glm::vec4& a_endColour)
+{
+	m_startSize = a_startSize;
+	m_endSize = a_endSize;
+	m_startColour = a_startColour;
+	m_endColour = a_endColour;
+	glDeleteProgram(m_drawShader);
+	glDeleteProgram(m_updateShader);
+
+	unsigned int vs = loadShader(GL_VERTEX_SHADER,
+		"gpuParticle.vert");
+	unsigned int gs = loadShader(GL_GEOMETRY_SHADER,
+		"gpuParticle.geom");
+	unsigned int fs = loadShader(GL_FRAGMENT_SHADER,
+		"gpuParticle.frag");
+
+	m_drawShader = glCreateProgram();
+	glAttachShader(m_drawShader, vs);
+	glAttachShader(m_drawShader, fs);
+	glAttachShader(m_drawShader, gs);
+	glLinkProgram(m_drawShader);
+	// remove unneeded handles
+	glDeleteShader(vs);
+	glDeleteShader(gs);
+	glDeleteShader(fs);
+	// bind the shader so that we can set
+	// some uniforms that don't change per-frame
+	glUseProgram(m_drawShader);
+	// bind size information for interpolation that won’t change
+	int location = glGetUniformLocation(m_drawShader, "sizeStart");
+	glUniform1f(location, m_startSize);
+	location = glGetUniformLocation(m_drawShader, "sizeEnd");
+	glUniform1f(location, m_endSize);
+	// bind colour information for interpolation that wont change
+	location = glGetUniformLocation(m_drawShader, "colourStart");
+	glUniform4fv(location, 1, &m_startColour[0]);
+	location = glGetUniformLocation(m_drawShader, "colourEnd");
+	glUniform4fv(location, 1, &m_endColour[0]);
+
+	// create a shader
+	vs = loadShader(GL_VERTEX_SHADER,
+		"gpuParticleUpdate.vert");
+	m_updateShader = glCreateProgram();
+	glAttachShader(m_updateShader, vs);
+	// specify the data that we will stream back
+	const char* varyings[] = { "position", "velocity",
+		"lifetime", "lifespan" };
+	glTransformFeedbackVaryings(m_updateShader, 4, varyings,
+		GL_INTERLEAVED_ATTRIBS);
+	// continued next page...
+	glLinkProgram(m_updateShader);
+	// remove unneeded handles
+	glDeleteShader(vs);
+	// bind the shader so that we can set some
+	// uniforms that don't change per-frame
+	glUseProgram(m_updateShader);
+	// bind lifetime minimum and maximum
+	location = glGetUniformLocation(m_updateShader, "lifeMin");
+	glUniform1f(location, m_lifespanMin);
+	location = glGetUniformLocation(m_updateShader, "lifeMax");
+	glUniform1f(location, m_lifespanMax);
+}
+
 unsigned int GPUParticleEmitter::loadShader(unsigned int type, const char* path) {
 	FILE* file = fopen(path, "rb");
 	if (file == nullptr)
@@ -43,6 +108,7 @@ GPUParticleEmitter::~GPUParticleEmitter() {
 	// delete the shaders
 	glDeleteProgram(m_drawShader);
 	glDeleteProgram(m_updateShader);
+
 }
 
 void GPUParticleEmitter::initalise(unsigned int a_maxParticles,

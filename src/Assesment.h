@@ -59,8 +59,15 @@ public:
 	FBXFile* m_fbx;
 	FBXFile* m_fbx2;
 
+	vec4 m_StartColour;
+	vec4 m_EndColour;
+	float m_StartSize;
+	float m_EndSize;
 	vec3 m_lightDirection;
 
+	void UpdatePlain();
+	void UpdateParticle();
+	bool Reload;
 };
 
 
