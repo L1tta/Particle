@@ -3,6 +3,34 @@
 
 #include "GLFW/glfw3.h"
 
+vec3 Camera::pickAgainstPlane(float x, float y, vec4 plane)
+{
+	float nxPos = x / 1280;
+	float nyPos = x / 720;
+
+	float sxPos = nxPos - 0.5;
+	float syPos = nyPos - 0.5;
+
+	float fxPos = sxPos * 2;
+	float fyPos = syPos * -2;
+
+	mat4 inv_viewProj = glm::inverse(view_proj);
+
+	vec4 mouse_pos(fxPos, fyPos, 1, 1);
+	vec4 world_pos = inv_viewProj * mouse_pos;
+
+	world_pos /= world_pos.w;
+
+	vec3 cam_pos = world[3].xyz();
+	vec3 dir = world_pos.xyz() - cam_pos;
+
+	float t = -(glm::dot(cam_pos, plane.xyz()) + plane.w) / (glm::dot(dir, plane.xyz()));
+	
+	vec3 result = cam_pos + dir * t;
+
+	return result;
+}
+
 Camera::Camera(float aspect)
 {
 	view = glm::lookAt(vec3(0,0,0), vec3(0,0,1), vec3(0, 1, 0));

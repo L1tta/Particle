@@ -42,7 +42,8 @@ public:
 	std::vector<unsigned int> m_indices;
 	glm::mat4 m_localTransform;
 	glm::mat4 m_globalTransform;
-	void* m_userData;	void createOpenGLBuffers(FBXFile* fbx);
+	void* m_userData;
+	void createOpenGLBuffers(FBXFile* fbx);
 	void cleanupOpenGLBuffers(FBXFile* fbx);
 	FBXFile* m_fbx;
 };

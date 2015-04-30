@@ -21,6 +21,7 @@ public:
 	void setPosition(vec3 pos);
 	void setPerspective(float fov, float aspect, float near, float far);
 	void setLookAt(vec3 pos, vec3 center, vec3 up);
+	vec3 pickAgainstPlane(float x, float y, vec4 plane);
 
 	virtual void update(float dt) = 0;
 

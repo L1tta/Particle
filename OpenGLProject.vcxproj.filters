@@ -47,9 +47,6 @@
     <Filter Include="DeferredRendering">
       <UniqueIdentifier>{802d4641-90f0-4959-a7a7-e1424012ff37}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ProceduralGeneration">
-      <UniqueIdentifier>{7815811d-cbba-4584-8f53-99c9bc7195f9}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Shaders\Shadows">
       <UniqueIdentifier>{0716550a-433d-4e1a-afed-50c37b1379e7}</UniqueIdentifier>
     </Filter>
@@ -64,6 +61,12 @@
     </Filter>
     <Filter Include="Cache Coherence">
       <UniqueIdentifier>{d83323d1-73ee-4e74-a50b-a92dcc94b6b5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Connect4">
+      <UniqueIdentifier>{c2a29f4e-fbcb-4ec8-839d-5225f2d8daa5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quaternions\ProceduralGeneration">
+      <UniqueIdentifier>{7815811d-cbba-4584-8f53-99c9bc7195f9}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -134,7 +137,7 @@
       <Filter>DeferredRendering</Filter>
     </ClInclude>
     <ClInclude Include="src\ProceduralGeneration.h">
-      <Filter>ProceduralGeneration</Filter>
+      <Filter>Quaternions\ProceduralGeneration</Filter>
     </ClInclude>
     <ClInclude Include="src\AdvanceNav.h">
       <Filter>AdvanceNav</Filter>
@@ -153,6 +156,15 @@
     </ClInclude>
     <ClInclude Include="src\GPUParticleEmitter.h">
       <Filter>Assesment</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ConnectFour.h">
+      <Filter>Connect4</Filter>
+    </ClInclude>
+    <ClInclude Include="src\AIBase.h">
+      <Filter>Connect4</Filter>
+    </ClInclude>
+    <ClInclude Include="src\C4.h">
+      <Filter>Connect4</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -213,7 +225,7 @@
       <Filter>DeferredRendering</Filter>
     </ClCompile>
     <ClCompile Include="src\ProceduralGeneration.cpp">
-      <Filter>ProceduralGeneration</Filter>
+      <Filter>Quaternions\ProceduralGeneration</Filter>
     </ClCompile>
     <ClCompile Include="src\AdvanceNav.cpp">
       <Filter>AdvanceNav</Filter>
@@ -229,6 +241,12 @@
     </ClCompile>
     <ClCompile Include="src\GPUParticleEmitter.cpp">
       <Filter>Assesment</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ConnectFour.cpp">
+      <Filter>Connect4</Filter>
+    </ClCompile>
+    <ClCompile Include="src\C4.cpp">
+      <Filter>Connect4</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

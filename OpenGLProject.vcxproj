@@ -91,12 +91,15 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="src\AdvanceNav.h" />
+    <ClInclude Include="src\AIBase.h" />
     <ClInclude Include="src\Animation.h" />
     <ClInclude Include="src\AntTweakBar.h" />
     <ClInclude Include="src\Application.h" />
     <ClInclude Include="src\Assesment.h" />
+    <ClInclude Include="src\C4.h" />
     <ClInclude Include="src\Camera.h" />
     <ClInclude Include="src\CameraAndProjections.h" />
+    <ClInclude Include="src\ConnectFour.h" />
     <ClInclude Include="src\DeferredRendering.h" />
     <ClInclude Include="src\FBXFile.h" />
     <ClInclude Include="src\Gizmos.h" />
@@ -129,8 +132,10 @@
     <ClCompile Include="src\Animation.cpp" />
     <ClCompile Include="src\Application.cpp" />
     <ClCompile Include="src\Assesment.cpp" />
+    <ClCompile Include="src\C4.cpp" />
     <ClCompile Include="src\Camera.cpp" />
     <ClCompile Include="src\CameraAndProjections.cpp" />
+    <ClCompile Include="src\ConnectFour.cpp" />
     <ClCompile Include="src\DeferredRendering.cpp" />
     <ClCompile Include="src\Gizmos.cpp" />
     <ClCompile Include="src\gl_core_4_4.c" />
